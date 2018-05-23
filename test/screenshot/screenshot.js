@@ -200,7 +200,10 @@ export default class Screenshot {
    */
   async takeScreenshot_() {
     // const browser = await puppeteer.launch({args: ['--no-sandbox']});
-    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: '/usr/bin/chromium-browser'
+    });
     const page = await browser.newPage();
     await page.goto(`http://localhost:8080/${this.urlPath_}`, {'waitUntil': 'networkidle2'});
     const imageBuffer = await page.screenshot({fullPage: true});
