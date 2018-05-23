@@ -9,7 +9,7 @@ module.exports = function(config) {
   karmaConfig.customLaunchers = {
     ChromeHeadlessNoSandbox: {
       base: 'ChromeHeadless',
-      flags: ['--headless', '--disable-gpu', '--remote-debugging-port=9222', 'http://0.0.0.0:9876/']
+      flags: ['--no-sandbox', '--disable-setuid-sandbox']
     }
   };
   config.set(karmaConfig);
