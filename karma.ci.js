@@ -4,6 +4,13 @@ const karmaConfig = require('./scripts/karma/config');
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function(config) {
-  karmaConfig.browsers = ['ChromeHeadless'];
+  // karmaConfig.browsers = ['ChromeHeadless'];
+  karmaConfig.browsers = ['ChromeHeadlessNoSandbox'];
+  karmaConfig.customLaunchers = {
+    ChromeHeadlessNoSandbox: {
+      base: 'ChromeHeadless',
+      flags: ['--no-sandbox']
+    }
+  };
   config.set(karmaConfig);
 };
